@@ -47,7 +47,7 @@ exports.signup = catchAsync(async (req, res, next) => {
 
     })
     const url = `${req.protocol}://${req.get('host')}/me`
-    console.log(url)
+    //console.log(url)
     await new Email(newUser, url).sendWelcome()
 
     // const token = sighnToken({ id: newUser._id })
@@ -107,7 +107,7 @@ exports.protect = catchAsync(
         // console.log(token)
         //validate the token
         const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET)
-        // console.log(decoded)
+
 
         //check if user still exist
         const CurrentUser = await User.findById(decoded.id)

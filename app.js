@@ -15,6 +15,7 @@ const viewRouter = require('./Routes/viewRoutes')
 const bookingsRouter = require('./Routes/BookingRoutes')
 const cookieParser = require('cookie-parser')
 const cors = require('cors')
+const compression = require('compression')
 
 //start express app
 const app = express();
@@ -68,9 +69,12 @@ app.use(express.static(path.join(__dirname, 'public')))
 // app.post('/',(req,res) => {
 //     res.send('you can post')
 // })
+app.use(compression())
+
+
 //test middleware
 app.use((req, res, next) => {
-    console.log("Hello from Middleware");
+    //console.log("Hello from Middleware");
     next();
 })
 
